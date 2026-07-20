@@ -72,3 +72,5 @@ app.delete("/komik/:id", async (req, res) => {
     res.status(500).send(err);
   }
 });
+
+// 
