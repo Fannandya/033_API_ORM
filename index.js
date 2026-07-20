@@ -11,10 +11,6 @@ app.use(
   }),
 );
 
-app.listen(PORT, () => {
-  console.log("ALHAMDULILLAH SERVER JALAN DI PORT 3000");
-});
-
 db.sequelize
   .sync()
   .then((result) => {
@@ -50,7 +46,7 @@ app.put("/komik/:id", async (req, res) => {
   const data = req.body;
 
   try {
-    const komik = await db.komik.findByPK(id);
+    const komik = await db.komik.findByPk(id);
     if (!komik) {
       return res.status(404).send({ message: "komik tidak ditemukan" });
     }
@@ -65,7 +61,7 @@ app.put("/komik/:id", async (req, res) => {
 app.delete("/komik/:id", async (req, res) => {
   const id = req.params.id;
   try {
-    const komik = await db.komik.findByPK(id);
+    const komik = await db.komik.findByPk(id);
     if (!komik) {
       return res.status(404).send({ message: "komik tidak ditemukan" });
     }
